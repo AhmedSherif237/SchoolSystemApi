@@ -3,7 +3,7 @@ const { sequelize, User, Grade, Student, AttendanceRecord, LateArrival } = requi
 const port = 5000;
 
 // database connection test
-sequelize.authenticate() 
+sequelize.authenticate()
     .then(() => {
         console.log('Database connection has been established successfully.');
         // refreshing the database schema
@@ -12,9 +12,10 @@ sequelize.authenticate()
     .then(() => {
         console.log('Database schema synced successfully!');
 
-        app.listen(port, () => {
-            console.log(`Server running on port ${port}`);
-            console.log(`App URL: http://localhost:${port}`);
+        const PORT = process.env.PORT || 3000;
+        app.listen(PORT, () => {
+            console.log(`Server running on port ${PORT}`);
+            console.log(`App URL: http://localhost:${PORT}`);
         });
     })
     .catch(err => {
